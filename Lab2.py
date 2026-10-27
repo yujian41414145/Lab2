@@ -30,7 +30,17 @@ def sort_temperature(temp_list):
 
 
 def calc_median_temperature(temp_list):
-    print("calc_median_temperature")
+    sorted_list = sorted(temp_list)
+    n = len(sorted_list)
+
+    if n % 2 == 1:
+        median = sorted_list[n // 2]
+    else:
+        middle1 = sorted_list[n // 2 - 1]
+        middle2 = sorted_list[n // 2]
+        median = (middle1 + middle2) / 2
+
+    return median
 
 
 def main():
@@ -41,10 +51,13 @@ def main():
 
     average = calc_average(num_list)
     min_temp, max_temp = find_min_max(num_list)
+    median = calc_median_temperature(num_list)
+
 
     print("Average Temperature =", f"{average:.2f}")
     print("Minimum Temperature =", f"{min_temp:.2f}")
     print("Maximum Temperature =", f"{max_temp:.2f}")
+    print("Median Temperature =", f"{median:.2f}")
 
 
 if __name__ == "__main__":
